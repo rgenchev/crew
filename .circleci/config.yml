@@ -1,0 +1,42 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2
+        environment:
+          PGHOST: localhost
+          PGUSER: crew
+          RAILS_ENV: test
+      - image: circleci/postgres:9.5-alpine
+        environment:
+          POSTGRES_USER: crew
+          POSTGRES_DB: crew_test
+          POSTGRES_PASSWORD: ""
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Install Bundler
+          command: gem install bundler -v $(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
+
+      - restore_cache:
+          keys:
+            # when lock file changes, use increasingly general patterns to restore cache
+            - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - v1-gem-cache-{{ arch }}-{{ .Branch }}-
+            - v1-gem-cache-{{ arch }}-
+      - run: bundle install
+      - run: bundle clean --force
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run: bundle exec rails db:setup
+      - run: bundle exec rails test
