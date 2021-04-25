@@ -19,22 +19,21 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install Bundler
-        command: gem install bundler -v $(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
+          name: Install Bundler
+          command: gem install bundler -v $(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
 
-      - type: cache-restore
-        name: Restore bundle cache
-        key: crew-{{ checksum "Gemfile.lock" }}
-
-      # Bundle install dependencies
-      - ruby/bundle-install
-
-      # Cache Dependencies
-      - type: cache-save
-        name: Store bundle cache
-        key: crew-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      - restore_cache:
+          keys:
+            # when lock file changes, use increasingly general patterns to restore cache
+            - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - v1-gem-cache-{{ arch }}-{{ .Branch }}-
+            - v1-gem-cache-{{ arch }}-
+      - run: bundle install
+      - run: bundle clean --force
+      - save_cache:
+          paths:
+            - ~/.bundle
+          key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
 
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
