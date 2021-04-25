@@ -1,0 +1,20 @@
+<p id=”alert”><%= alert %></p>
+
+<main class="pa4 black-80">
+  <%= form_tag sessions_path, class: "measure center" do |form| %>
+    <fieldset id="sign_in" class="ba b--transparent ph0 mh0">
+      <legend class="f4 fw6 ph0 mh0">Sign In</legend>
+    </fieldset>
+    <div class="mt3">
+      <%= label_tag :email, nil, class: "db fw6 lh-copy f6" %>
+      <%= text_field_tag :email, "", class: "pa2 input-reset ba bg-transparent w-100" %>
+    </div>
+    <div class="mv3">
+      <%= label_tag :password, nil, class: "db fw6 lh-copy f6" %>
+      <%= password_field_tag :password, "", class: "b pa2 input-reset ba bg-transparent w-100" %>
+    </div>
+    <div class="">
+      <%= submit_tag "Let's go!", class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+    </div>
+  <% end %>
+</main>
