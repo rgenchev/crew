@@ -25,15 +25,13 @@ jobs:
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
-            - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - v1-gem-cache-{{ arch }}-{{ .Branch }}-
-            - v1-gem-cache-{{ arch }}-
+            - crew-{{ checksum "Gemfile.lock" }}
       - run: bundle install --path vendor/bundle
       - run: bundle clean --force
       - save_cache:
           paths:
             - vendor/bundle
-          key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: crew-{{ checksum "Gemfile.lock" }}
 
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
