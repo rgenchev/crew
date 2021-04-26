@@ -11,4 +11,11 @@ class UserTest < ActiveSupport::TestCase
 
     refute user.valid?
   end
+
+  test "should not be valid without name" do
+    user = users(:valid)
+    user.name = nil
+
+    refute user.valid?
+  end
 end
