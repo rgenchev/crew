@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   private
 
   def current_user
@@ -15,5 +17,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     redirect_to login_path if current_user.nil?
+  end
+
+  def record_not_found
+    render file: 'public/404.html', status: :not_found, layout: false
   end
 end
