@@ -11,6 +11,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/nav' %>
+
+    <main class="pa4 black-80 measure center">
+      <%= yield %>
+    </main>
   </body>
 </html>
