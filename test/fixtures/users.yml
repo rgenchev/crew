@@ -8,3 +8,4 @@ valid:
   email: max@crew.com
   name: Max Mustermann
   password_digest: <%= BCrypt::Password.create('Test1234#') %>
+  team: development

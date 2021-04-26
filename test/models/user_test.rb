@@ -18,4 +18,11 @@ class UserTest < ActiveSupport::TestCase
 
     refute user.valid?
   end
+
+  test "should not be valid without team" do
+    user = users(:valid)
+    user.team = nil
+
+    refute user.valid?
+  end
 end
