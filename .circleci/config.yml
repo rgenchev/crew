@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2
-  node: circleci/node@4.3.0 
+  ruby: circleci/ruby@0.1.2-node
 
 jobs:
   build:
@@ -33,10 +32,6 @@ jobs:
           paths:
             - vendor/bundle
           key: crew-{{ checksum "Gemfile.lock" }}
-
-      - run:
-          name: Install Yarn
-          command: curl -o- -L https://yarnpkg.com/install.sh | bash
 
       - restore_cache:
           name: Restore Yarn Package Cache
