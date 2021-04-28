@@ -44,7 +44,7 @@ jobs:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - '**/node_modules'
 
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
