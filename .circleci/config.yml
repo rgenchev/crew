@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.2
+      - image: circleci/ruby:2.7.2-node
         environment:
           PGHOST: localhost
           PGUSER: crew
@@ -32,6 +32,19 @@ jobs:
           paths:
             - vendor/bundle
           key: crew-{{ checksum "Gemfile.lock" }}
+
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
