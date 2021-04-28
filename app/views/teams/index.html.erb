@@ -1,17 +1,18 @@
-<section class="pa2 pa4-ns">
-  <article class="ba b--black-10 br2 bg-white pa4 mw6 center">
-    <div>
-      <h4 class="f3 fw4 black-60 dib v-mid mv0 mr3">Teams</h4>
-    </div>
-    <ul class="list f6 pl0 mt3 mb0">
-      <% @teams.each do |team| %>
-        <li class="pv2">
-        <a href="#" class="">
-          <%= link_to team.name, team_path(team.slug), class: "link blue lh-title" %>
-          <span class="db black-60"><%= team.users.count %> Members</span>
-        </a>
-      </li>  
-      <% end %>
-    </ul>
-  </article>
-</section>
+<header class="tc pv4 pv5-ns">
+  <h1 class="f5 f3-ns fw6 mid-gray">Teams</h1>
+</header>
+
+<% @teams.each do |team| %>
+  <ul class="list pl0 mt0 measure center">
+    <li
+      class="flex items-center lh-copy pa3 ph0-l bb b--black-10">
+        <img class="w2 h2 w3-ns h3-ns br-100" src="http://tachyons.io/img/avatar-mrmrs.jpg" />
+        <div class="pl3 flex-auto">
+          <span class="f6 db black-70"><%= team.name %></span>
+        </div>
+        <div>
+          <span class="f6 link blue hover-dark-gray"><%= team.users.count %> Teammates</span>
+        </div>
+    </li>
+  </ul>
+<% end %>
