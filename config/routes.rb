@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'about', to: 'about#index'
+
+  namespace "my" do
+    get 'account', to: 'users#edit'
+    put 'account', to: 'users#update'
+  end
 end
