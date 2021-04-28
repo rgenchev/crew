@@ -6,3 +6,6 @@
 #
 development:
   name: Development
+
+accounting:
+  name: Accounting
