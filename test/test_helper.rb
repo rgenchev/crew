@@ -13,3 +13,15 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  fixtures :all
+
+  def login(user)
+    ApplicationController.any_instance.stubs(:current_user).returns(user)
+  end
+
+  def logout
+    ApplicationController.any_instance.stubs(:current_user).returns nil
+  end
+end
