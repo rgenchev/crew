@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= render 'shared/nav' %>
+    <% if current_user.present? %>
+      <%= render 'shared/nav' %>
+    <% end %>
 
     <main class="pa4 black-80 measure center">
       <%= render 'shared/flash_message' %>
