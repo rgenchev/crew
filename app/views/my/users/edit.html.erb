@@ -1,21 +1,48 @@
 <header class="tc pv4 pv4-ns">
-  <h1 class="f5 f2-ns fw6 mid-gray">Update your account</h1>
+  <h1 class="f5 f2-ns fw6 mid-gray">Account</h1>
 </header>
 
-<%= form_with(model: current_user, url: my_account_url(current_user), method: 'put', class: "pa4 black-80" ) do |form| %>
-  <div class="measure center">
+<div class="measure center mb5">
+  <h2 class="pb3 mb4 bb b--black-20">Account Details</h2>
+
+  <%= form_with(model: current_user, url: my_account_url, method: 'put', class: "black-80" ) do |form| %>
     <div class="mb3">
       <%= form.label :name, class: "f6 b db mb2" %>
-      <%= form.text_field :name, class: "input-reset ba b--black-20 pa2 mb2 db w-100" %>
+      <%= form.text_field :name, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
     </div>
 
     <div class="mb3">
       <%= form.label :team, class: "f6 b db mb2" %>
-      <%= form.select :team_id, options_for_select(Team.all.sort_by(&:name).map { |t| [t.name, t.id] }, form.object.team_id), { include_blank: "Choose Team" }, { class: "input-reset ba b--black-20 pa2 mb2 db w-100" } %>
+      <%= form.select :team_id, options_for_select(Team.all.sort_by(&:name).map { |t| [t.name, t.id] }, form.object.team_id), { include_blank: "Choose Team" }, { class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" } %>
     </div>
 
     <div class="tr">
-      <%= form.submit "Update", class: "b ph3 pv2 input-reset ba white bg-dark-blue grow pointer f6 dib" %>
+      <%= form.submit "Update", class: "b ph3 pv2 input-reset ba white bg-dark-blue br3 grow pointer f6 dib" %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<div class="measure center">
+  <h2 class="pb3 mb4 bb b--black-20">Account Password</h2>
+
+  <%= form_with(model: current_user, url: my_account_change_password_url, method: 'patch', class: "black-80" ) do |form| %>
+    <div class="mb3">
+      <%= form.label :old_password, class: "f6 b db mb2" %>
+      <%= form.password_field :old_password, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+    </div>
+
+    <div class="mb3">
+      <%= form.label :new_password, class: "f6 b db mb2" %>
+      <%= form.password_field :new_password, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+    </div>
+
+    <div class="mb3">
+      <%= form.label :new_password_confirmation, class: "f6 b db mb2" %>
+      <%= form.password_field :new_password_confirmation, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+    </div>
+
+    <div class="tr">
+      <%= form.submit "Update Password", class: "b ph3 pv2 input-reset ba white bg-dark-blue br3 grow pointer f6 dib" %>
+    </div>
+  <% end %>
+</div>
