@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   namespace "my" do
     get 'account', to: 'users#edit'
     put 'account', to: 'users#update'
+    patch 'account/change_password', to: 'users/change_password#update'
   end
 end
