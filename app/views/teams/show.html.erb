@@ -1,10 +1,10 @@
-<header class="tc pv4 pv5-ns">
-  <h1 class="f5 f3-ns fw6 mid-gray"><%= @team.name %></h1>
+<header class="tc pv4 pv4-ns">
+  <h1 class="f5 f2-ns fw6 mid-gray"><%= @team.name %></h1>
 </header>
 
 <section class="mb5">
   <h2 class="f4">Some info about the team</h2>
-  <p class="measure lh-copy">
+  <p class="lh-copy">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
     tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
     vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
@@ -16,12 +16,12 @@
   <h2 class="f4">Teammates</h2>
 
   <% @team.users.each do |user| %>
-    <ul class="list pl0 mt0 measure center">
+    <ul class="list pl0 mt0">
       <li
         class="flex items-center lh-copy pa3 ph0-l bb b--black-10">
           <img class="w2 h2 w3-ns h3-ns br-100" src="http://tachyons.io/img/avatar-mrmrs.jpg" />
           <div class="pl3 flex-auto">
-            <span class="f6 db black-70"><%= user.name %></span>
+            <span class="f5 db black-70"><%= user.name %></span>
           </div>
           <div>
             <%= mail_to user.email, user.email, class: "f6 link blue hover-dark-gray" %>
