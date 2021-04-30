@@ -1,7 +1,7 @@
 <% if flash.any? %>
-  <div class="mb-5">
+  <div class="mb3">
     <% flash.each do |key, value| %>
-      <div class="w-90 ba br2 pa3 ma2 <%= flash_message_classes_for_alert_level(key) %> mb-2" role="alert">
+      <div class="w-100 ba br2 pa3 <%= flash_message_classes_for_alert_level(key) %>" role="alert">
         <%= value %>
       </div>
     <% end %>

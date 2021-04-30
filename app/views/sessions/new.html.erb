@@ -1,18 +1,21 @@
-<p id=”alert”><%= alert %></p>
+<header class="tc pv4 pv4-ns">
+  <h1 class="f5 f2-ns fw6 mid-gray">Welcome to "App Name"</h1>
+</header>
 
-<%= form_tag sessions_path do |form| %>
-  <fieldset id="sign_in" class="ba b--transparent ph0 mh0">
-    <legend class="f4 fw6 ph0 mh0">Sign In</legend>
-  </fieldset>
-  <div class="mt3">
-    <%= label_tag :email, nil, class: "db fw6 lh-copy f6" %>
-    <%= text_field_tag :email, "", class: "pa2 input-reset ba bg-transparent w-100" %>
-  </div>
-  <div class="mv3">
-    <%= label_tag :password, nil, class: "db fw6 lh-copy f6" %>
-    <%= password_field_tag :password, "", class: "b pa2 input-reset ba bg-transparent w-100" %>
-  </div>
-  <div class="">
-    <%= submit_tag "Let's go!", class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
-  </div>
-<% end %>
+<div class="measure center">
+  <h2 class="pb3 mb4">Sign In</h2>
+
+  <%= form_tag login_path, method: 'post', class: "black-80" do |form| %>
+    <div class="mb3">
+      <%= label_tag :email, nil, class: "f6 b db mb2" %>
+      <%= text_field_tag :email, "", class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+    </div>
+    <div class="mb3">
+      <%= label_tag :password, nil, class: "f6 b db mb2" %>
+      <%= password_field_tag :password, "", class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+    </div>
+    <div class="tr">
+      <%= submit_tag "Let's go!", class: "b ph3 pv2 input-reset ba white bg-dark-blue br3 grow pointer f6 dib" %>
+    </div>
+  <% end %>
+</div>
