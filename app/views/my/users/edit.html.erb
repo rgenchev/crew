@@ -3,7 +3,7 @@
 </header>
 
 <div class="measure center mb5">
-  <h2 class="pb3 mb4 bb b--black-20">Account Details</h2>
+  <h2 class="pb3 mb4 bb b--black-20">Details</h2>
 
   <%= form_with(model: current_user, url: my_account_url, method: 'put', class: "black-80" ) do |form| %>
     <div class="mb3">
@@ -23,7 +23,7 @@
 </div>
 
 <div class="measure center">
-  <h2 class="pb3 mb4 bb b--black-20">Account Password</h2>
+  <h2 class="pb3 mb4 bb b--black-20">Change Password</h2>
 
   <%= form_with(model: current_user, url: my_account_change_password_url, method: 'patch', class: "black-80" ) do |form| %>
     <div class="mb3">
@@ -45,4 +45,8 @@
       <%= form.submit "Update Password", class: "b ph3 pv2 input-reset ba white bg-dark-blue br3 grow pointer f6 dib" %>
     </div>
   <% end %>
+</div>
+
+<div class="measure center tr mt5">
+  <%= button_to 'Logout', logout_url, method: 'delete', class: "b ph3 pv2 input-reset ba white bg-red br3 pointer f6 dib" %>
 </div>
