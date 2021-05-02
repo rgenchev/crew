@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :teams, param: :slug
+  resources :users, param: :username
 
   get 'about', to: 'about#index'
 

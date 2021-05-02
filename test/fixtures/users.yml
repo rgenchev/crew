@@ -6,6 +6,7 @@
 #
 valid:
   email: max@crew.com
+  username: mmustermann
   name: Max Mustermann
   password_digest: <%= BCrypt::Password.create('Test1234#') %>
   team: development
