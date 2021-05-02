@@ -1,6 +1,8 @@
 class My::UsersController < ApplicationController
   def edit
     # authorize current_user
+
+    add_breadcrumb "Edit Account", my_account_url
   end
 
   def update

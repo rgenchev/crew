@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  before_action :set_breadcrumb
+
   private
 
   def current_user
@@ -21,5 +23,9 @@ class ApplicationController < ActionController::Base
 
   def record_not_found
     render file: 'public/404.html', status: :not_found, layout: false
+  end
+
+  def set_breadcrumb
+    add_breadcrumb "Home", root_url
   end
 end
