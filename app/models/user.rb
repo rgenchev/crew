@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def username=(value)
     super(value&.downcase)
   end
+
+  def to_param
+    username
+  end
 end
