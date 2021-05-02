@@ -17,7 +17,7 @@
 
     <main class="pa4 black-80 mw7 center">
       <%= render 'shared/flash_message' %>
-      <%= render 'shared/crumbs' unless request.original_url == root_url %>
+      <%= render 'shared/crumbs' unless request.original_url.in?([root_url, login_url]) %>
 
       <%= yield %>
     </main>
