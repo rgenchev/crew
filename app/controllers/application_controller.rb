@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  before_action :set_breadcrumb
+  before_action :set_crumbs
 
   private
 
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     render file: 'public/404.html', status: :not_found, layout: false
   end
 
-  def set_breadcrumb
+  def set_crumbs
     add_breadcrumb "Home", root_url
   end
 end
