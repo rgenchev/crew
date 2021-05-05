@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
+  skip_after_action :verify_authorized, only: [:new, :create]
 
   def new; end
 
@@ -16,6 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    authorize :session, :destroy?
+
     session[:user_id] = nil
     redirect_to root_url, notice: "Logged out!"
   end
