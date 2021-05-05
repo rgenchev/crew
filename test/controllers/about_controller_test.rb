@@ -2,7 +2,7 @@ require "test_helper"
 
 class AboutControllerTest < ActionDispatch::IntegrationTest
   test "should get index if logged in" do
-    login(users(:valid))
+    login(users(:user))
     get about_url
     assert_response :success
   end

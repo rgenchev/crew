@@ -2,7 +2,7 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:valid)
+    @user = users(:user)
   end
 
   test "should get index if logged in" do

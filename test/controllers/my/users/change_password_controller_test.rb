@@ -4,7 +4,7 @@ class My::Users::ChangePasswordControllerTest < ActionDispatch::IntegrationTest
   def setup
     super
 
-    @user = users(:valid)
+    @user = users(:user)
     login(@user)
   end
 
