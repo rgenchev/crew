@@ -10,3 +10,4 @@ valid:
   name: Max Mustermann
   password_digest: <%= BCrypt::Password.create('Test1234#') %>
   team: development
+  role: "user"
