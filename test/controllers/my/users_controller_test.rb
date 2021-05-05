@@ -2,7 +2,7 @@ require "test_helper"
 
 class My::UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get edit if logged in" do
-    user = users(:valid)
+    user = users(:user)
     login(user)
 
     get my_account_url
@@ -11,7 +11,7 @@ class My::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should be able to update account if logged in" do
-    user = users(:valid)
+    user = users(:user)
     login(user)
 
     put my_account_url, params: {
