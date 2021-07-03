@@ -9,6 +9,7 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 gem "breadcrumbs_on_rails"
+gem "pundit"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

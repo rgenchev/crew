@@ -1,6 +1,6 @@
 class My::Users::ChangePasswordController < ApplicationController
   def update
-    # authorize current_user, :change_password?
+    authorize current_user, policy_class: My::UserPolicy
 
     if current_user.authenticate(user_change_password_params[:old_password])
       current_user.password = user_change_password_params[:new_password]
