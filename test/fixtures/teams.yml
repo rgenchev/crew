@@ -6,6 +6,8 @@
 #
 development:
   name: Development
+  slug: development
 
 accounting:
   name: Accounting
+  slug: accounting
