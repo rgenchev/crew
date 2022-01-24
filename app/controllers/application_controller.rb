@@ -2,10 +2,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   before_action :authenticate
+  before_action :set_crumbs
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
-  before_action :set_crumbs
 
   private
 
