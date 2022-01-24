@@ -5,7 +5,7 @@ class Team < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false }
   validates :slug, uniqueness: { case_sensitive: false }
 
-  after_validation :set_slug, only: [:create, :update]
+  before_validation :set_slug, only: [:create, :update]
 
   def to_param
     slug
