@@ -16,7 +16,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     login(@user)
 
     get user_url(@user)
-
     assert_response :success
   end
 
@@ -27,7 +26,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should not get show if not logged in" do
     get user_url(@user)
-
     assert_redirected_to login_url
   end
 end
