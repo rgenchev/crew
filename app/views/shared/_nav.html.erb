@@ -9,5 +9,9 @@
     <%= link_to 'Teammates', users_url, class: "link dim dark-gray f6 f5-l dib mr3 mr4-l" %>
     <%= link_to 'Teams', teams_url, class: "link dim dark-gray f6 f5-l dib mr3 mr4-l" %>
     <%= link_to 'Account', my_account_url, class: "link dim dark-gray f6 f5-l dib" %>
+
+    <% if current_user.admin? %>
+      <%= link_to 'Admin Dashboard', admin_dashboard_url, class: "link dim dark-gray f6 f5-l dib ml3 ml4-l" %>
+    <% end %>
   </div>
 </nav>
