@@ -13,7 +13,7 @@
 
     <div class="mb3">
       <%= form.label :team, class: "f6 b db mb2" %>
-      <%= form.select :team_id, options_for_select(Team.all.sort_by(&:name).map { |t| [t.name, t.id] }, form.object.team_id), { include_blank: "Choose Team" }, { class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" } %>
+      <%= form.select :team_id, options_for_select(Team.all.sort_by(&:name).map { |t| [t.name, t.id] }, form.object.team_id), { include_blank: "Choose Team" }, { class: "input-reset ba b--black-20 bg-white pointer br2 pa2 mb2 db w-100" } %>
     </div>
 
     <div class="tr">
@@ -48,5 +48,5 @@
 </div>
 
 <div class="measure center tr mt5">
-  <%= button_to 'Logout', logout_url, method: 'delete', class: "b ph3 pv2 input-reset ba white bg-red br3 pointer f6 dib" %>
+  <%= button_to 'Logout', logout_url, method: 'delete', class: "b ph3 pv2 input-reset ba white bg-gray br3 pointer f6 dib" %>
 </div>
