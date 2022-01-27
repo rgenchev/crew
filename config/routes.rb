@@ -15,4 +15,8 @@ Rails.application.routes.draw do
     put 'account', to: 'users#update'
     patch 'account/change_password', to: 'users/change_password#update'
   end
+
+  namespace :admin do
+    resources :users
+  end
 end

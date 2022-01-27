@@ -1,0 +1,29 @@
+<header class="tc pv4 pv4-ns">
+  <h1 class="f5 f2-ns fw6 mid-gray">New teammate</h1>
+</header>
+
+<%= form_with model: [:admin, @user], class: "black-80" do |form| %>
+  <div class="mb3">
+      <%= form.label :email, class: "f6 b db mb2" %>
+      <%= form.text_field :email, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+
+      <div class="mb3">
+        <%= form.label :team, class: "f6 b db mb2" %>
+        <%= form.select :team_id, options_for_select(Team.all.sort_by(&:name).map { |t| [t.name, t.id] }, form.object.team_id), { include_blank: "Choose Team" }, { class: "input-reset ba b--black-20 bg-white pointer br2 pa2 mb2 db w-100" } %>
+      </div>
+
+      <div class="mb3">
+        <%= form.label :name, class: "f6 b db mb2" %>
+        <%= form.text_field :name, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+      </div>
+
+      <div class="mb3">
+        <%= form.label :username, class: "f6 b db mb2" %>
+        <%= form.text_field :username, class: "input-reset ba b--black-20 br2 pa2 mb2 db w-100" %>
+      </div>
+    </div>
+    <div class="tr">
+      <%= form.submit "Let's go!", class: "b ph3 pv2 input-reset ba white bg-dark-blue br3 grow pointer f6 dib" %>
+    </div>
+  <% end %>
+</div>
