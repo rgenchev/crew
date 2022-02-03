@@ -1,3 +1,16 @@
+require 'simplecov'
+
+SimpleCov.start 'rails' do
+  add_group "Services", "app/services"
+  add_group "Policies", "app/policies"
+
+  add_filter "app/channels"
+  add_filter "app/jobs/application_job"
+  add_filter "app/policies/application_policy"
+  add_filter "app/controllers/errors_controller"
+  add_filter "app/mailers/application_mailer"
+end
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative "../config/environment"
 require "rails/test_help"
